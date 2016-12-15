@@ -1,0 +1,60 @@
+<p id="notice"><%= notice%></p>
+
+<h1> Listing Books </h1>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+
+
+
+<table>
+
+<thead>
+<tr>
+	<th>Name</th>
+	<th>Authour name</th>
+	<th>Edition</th>
+	<th>Price</th>
+	<th>ISBN No</th>
+	<th colspan="5"></th>
+</tr>
+
+</thead>
+
+<tbody>
+	<% @books.each do |book| %>
+<tr>
+	
+
+	<td><%= book.name %></td>
+	<td><%= book.author_name %></td>
+	<td><%= book.edition %></td>
+	<td><%= book.price %></td>
+	<td><%= book.isbn_no %></td>
+	<td><%= link_to 'Show', book %></td>
+	<td><%= link_to 'Edit', edit_book_path(book) %></td>
+	<td><%= link_to 'Destroy', book, method:  :delete, data: { confirm: 'Are you sure'} %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>
